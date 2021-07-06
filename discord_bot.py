@@ -7,6 +7,10 @@ TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 SEND_CH_ID = int(os.environ.get('SEND_CH_ID', 0))
 VOICE_CH_ID = int(os.environ.get('VOICE_CH_ID', 0))
 
+def get_h_m_s(td):
+    m, s = divmod(td.seconds, 60)
+    h, m = divmod(m, 60)
+    return h, m, s
 
 client = discord.Client()
 member_time ={}
@@ -28,9 +32,9 @@ async def on_voice_state_update(member, before, after):
             await send_channel.send(msg)
             
         elif before.channel is not None and before.channel.id == VOICE_CH_ID:
-            duration_time =  now - member_time[member.id]
+            dh, dm, ds =  get_h_m_s(now - member_time[member.id])
             msg = f'【{now.strftime("%Y/%m/%d %H:%M:%S")}】 `{member.name}` が退出しました。'
-            msg = msg + f'【通話時間 {duration_time.strftime("%H:%M:%S")}】'
+            msg = msg + f'【通話時間 {dh:02}:{dm:02}:{ds:02}】'
             print(msg)
             await send_channel.send(msg)
     
