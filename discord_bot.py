@@ -27,13 +27,13 @@ async def on_voice_state_update(member, before, after):
         
         if  after.channel is not None and after.channel.id== VOICE_CH_ID:
             member_time[member.id]= now
-            msg = f'`{member.name}` が参加しました。'
+            msg = f':nyuusitu: `{member.name}`'
             print(msg)
             await send_channel.send(msg)
             
         elif before.channel is not None and before.channel.id == VOICE_CH_ID:
             dh, dm, ds =  get_h_m_s(now - member_time[member.id])
-            msg = f'`{member.name}` が退出しました。'
+            msg = f':taisitu: `{member.name}`'
             msg = msg + f'【通話時間 {dh:02}:{dm:02}:{ds:02}】'
             print(msg)
             await send_channel.send(msg)
