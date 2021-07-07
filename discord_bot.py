@@ -7,6 +7,8 @@ TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 SEND_CH_ID = int(os.environ.get('SEND_CH_ID', 0))
 VOICE_CH_ID = int(os.environ.get('VOICE_CH_ID', 0))
 
+EMOJI_NYUUSITU = "<:nyuusitu:862367829710077963>"
+EMOJI_TAISITU = "<:taisitu:862367699157516308>"
 def get_h_m_s(td):
     m, s = divmod(td.seconds, 60)
     h, m = divmod(m, 60)
@@ -27,13 +29,13 @@ async def on_voice_state_update(member, before, after):
         
         if  after.channel is not None and after.channel.id== VOICE_CH_ID:
             member_time[member.id]= now
-            msg = f':nyuusitu: `{member.name}`'
+            msg = f'{EMOJI_NYUUSITU } `{member.name}`'
             print(msg)
             await send_channel.send(msg)
             
         elif before.channel is not None and before.channel.id == VOICE_CH_ID:
             dh, dm, ds =  get_h_m_s(now - member_time[member.id])
-            msg = f':taisitu: `{member.name}`'
+            msg = f'{EMOJI_TAISITU} `{member.name}`'
             msg = msg + f'【通話時間 {dh:02}:{dm:02}:{ds:02}】'
             print(msg)
             await send_channel.send(msg)
