@@ -14,6 +14,8 @@
 |DISCORD_BOT_TOKEN| discordのbotのtoken|
 |SEND_CH_ID|通知するテキストチャンネルのid|
 |VOICE_CH_ID|監視するボイスチャンエンルのid|
+|EMOJI_NYUUSITU|入室絵文字に表示する絵文字|
+|EMOJI_TAISITU|退室時に表示する絵文字|
 
 
 ### pipenvを使う場合
