@@ -7,8 +7,8 @@ TOKEN = os.environ.get('DISCORD_BOT_TOKEN')
 SEND_CH_ID = int(os.environ.get('SEND_CH_ID', 0))
 VOICE_CH_ID = int(os.environ.get('VOICE_CH_ID', 0))
 
-EMOJI_NYUUSITU = "<:nyuusitu:862367829710077963>"
-EMOJI_TAISITU = "<:taisitu:862367699157516308>"
+EMOJI_NYUUSITU = os.environ.get('EMOJI_NYUUSITU', '入室')
+EMOJI_TAISITU = os.environ.get('EMOJI_TAISITU', '退室')
 def get_h_m_s(td):
     m, s = divmod(td.seconds, 60)
     h, m = divmod(m, 60)
